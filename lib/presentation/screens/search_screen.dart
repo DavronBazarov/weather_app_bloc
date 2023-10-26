@@ -13,7 +13,6 @@ class SearchScreen extends StatelessWidget {
       _formKey.currentState!.save();
 
       Navigator.of(context).pop(city);
-
     }
   }
 
@@ -23,7 +22,10 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Search a city"),
         centerTitle: true,
-        leading: const Icon(CupertinoIcons.back),
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(CupertinoIcons.back),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -45,13 +47,13 @@ class SearchScreen extends StatelessWidget {
                   }
                   return null;
                 },
-                onSaved: (value){
+                onSaved: (value) {
                   city = value;
                 },
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed:()=> _submit(context),
+                onPressed: () => _submit(context),
                 child: const Text("GET WEATHER"),
               ),
             ],
